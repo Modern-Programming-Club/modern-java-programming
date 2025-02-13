@@ -8,17 +8,26 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if PR was merged
+      - name: Get GitHub User Name
+        id: get_username
+        run: |
+          USERNAME=$(curl -s "https://api.github.com/users/${{ github.actor }}" | jq -r '.name')
+          if [ "$USERNAME" == "null" ]; then
+            USERNAME="${{ github.actor }}"
+          fi
+          echo "USERNAME=$USERNAME" >> $GITHUB_ENV
+
+      - name: Send Slack Notification
         if: github.event.pull_request.merged == true
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_MESSAGE: |
-            ✅ PR Merged!
-            🔗 Repository: `${{ github.repository }}`
-            🛠 Merged by: `${{ github.actor }}`
-            🚀 PR Title: `${{ github.event.pull_request.title }}`
-            📝 PR Description: `${{ github.event.pull_request.body }}`
-            🔗 PR URL: ${{ github.event.pull_request.html_url }}
+            ✅ *PR Merged!*
+            🚀 *${{ github.event.pull_request.title }}*
+            🛠 Merged by: `${{ env.USERNAME }}`
+            📝 Description:
+            - ${{ github.event.pull_request.body }}
+            🔗 *PR URL:* ${{ github.event.pull_request.html_url }}
           SLACK_USERNAME: "GitHub Actions"
           SLACK_ICON_EMOJI: ":white_check_mark:"
