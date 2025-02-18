@@ -1,10 +1,13 @@
 package com.mpc.springboot.member.domain.repository;
 
-import org.springframework.stereotype.Repository;
-import com.mpc.springboot.member.domain.dto.MemberView;
+import java.util.Optional;
+
+import com.mpc.springboot.member.domain.entity.Member;
 import com.mpc.springboot.member.domain.vo.MemberCode;
 
 public interface MemberRepository {
 
-     MemberView findMemberBy(MemberCode memberCode);
+     Optional<Member> findMemberBy(MemberCode code);
+
+     Member save(Member member);
 }
