@@ -29,10 +29,6 @@ public class Member {
         this.code = code;
         this.name = name;
     }
-
-    public static Member create(MemberCode code, MemberName name) {
-        return new Member(code, name);
-    }
 }
 
 

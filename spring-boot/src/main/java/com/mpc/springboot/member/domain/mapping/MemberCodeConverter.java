@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import com.mpc.springboot.member.domain.vo.MemberCode;
 
-@Converter(autoApply = true)
+@Converter
 public class MemberCodeConverter implements AttributeConverter<MemberCode, String> {
 
     @Override
