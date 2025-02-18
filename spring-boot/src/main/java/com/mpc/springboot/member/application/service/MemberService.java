@@ -1,7 +1,8 @@
 package com.mpc.springboot.member.application.service;
 
 import org.springframework.stereotype.Service;
-import com.mpc.springboot.member.application.dto.MemberResponse;
+import com.mpc.springboot.member.domain.entity.Member;
+import com.mpc.springboot.member.domain.exception.MemberNotFoundException;
 import com.mpc.springboot.member.domain.repository.MemberRepository;
 import com.mpc.springboot.member.domain.vo.MemberCode;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,12 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public MemberResponse getMemberBy(MemberCode memberCode) {
-        return MemberResponse.of(memberRepository.findMemberBy(memberCode));
+    public Member getMemberBy(MemberCode code) {
+        return memberRepository.findMemberBy(code)
+                .orElseThrow(MemberNotFoundException::new);
+    }
+
+    public Member createMember(Member member) {
+        return memberRepository.save(member);
     }
 }

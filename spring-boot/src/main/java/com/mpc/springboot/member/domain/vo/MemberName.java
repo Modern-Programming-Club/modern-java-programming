@@ -1,13 +1,17 @@
 package com.mpc.springboot.member.domain.vo;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@Embeddable
 public class MemberName {
-    private final String firstName;
-    private final String lastName;
+
+    private String firstName;
+    private String lastName;
 
     public String getFullName() {
         return firstName + " " + lastName;
