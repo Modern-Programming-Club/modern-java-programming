@@ -9,17 +9,14 @@ import lombok.*;
 
 @Getter
 @NoArgsConstructor
-//@Table(name = "member")
 @Entity
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "`key`")
     private Integer key;
 
     @Convert(converter = MemberCodeConverter.class)
-    @Column(name = "`code`")
     private MemberCode code;
 
     @Embedded
