@@ -9,6 +9,8 @@ spring:
     database: mysql
     hibernate:
       ddl-auto: validate
+      naming:
+        physical-strategy: com.mpc.springboot.config.persistence.jpa.QuotedCamelCaseToUnderScoresNamingStrategy
     show-sql: true
     properties:
       hibernate.format_sql: true
