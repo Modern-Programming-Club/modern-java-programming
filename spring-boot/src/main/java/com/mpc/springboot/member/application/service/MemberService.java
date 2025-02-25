@@ -1,5 +1,7 @@
 package com.mpc.springboot.member.application.service;
 
+import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 import com.mpc.springboot.member.domain.entity.Member;
 import com.mpc.springboot.member.domain.exception.MemberNotFoundException;
@@ -18,6 +20,7 @@ public class MemberService {
                 .orElseThrow(MemberNotFoundException::new);
     }
 
+    @Transactional
     public Member createMember(Member member) {
         return memberRepository.save(member);
     }

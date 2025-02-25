@@ -2,13 +2,16 @@ package com.mpc.springboot.member.domain.entity;
 
 import jakarta.persistence.*;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.mpc.springboot.member.domain.vo.MemberCode;
 import com.mpc.springboot.member.domain.mapping.MemberCodeConverter;
 import com.mpc.springboot.member.domain.vo.MemberName;
+import com.mpc.springboot.shared.domain.AuditFields;
 import lombok.*;
 
 @Getter
-@NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Member {
 
@@ -22,10 +25,8 @@ public class Member {
     @Embedded
     private MemberName name;
 
-    public Member(MemberCode code, MemberName name) {
-        this.code = code;
-        this.name = name;
-    }
+    @Embedded
+    private AuditFields auditFields = new AuditFields();
 }
 
 
