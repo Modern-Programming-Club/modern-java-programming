@@ -3,6 +3,7 @@ package com.mpc.springboot.member.application.service;
 import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import com.mpc.springboot.member.application.dto.MemberResponse;
 import com.mpc.springboot.member.domain.entity.Member;
 import com.mpc.springboot.member.domain.exception.MemberNotFoundException;
 import com.mpc.springboot.member.domain.repository.MemberRepository;
@@ -15,9 +16,10 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public Member getMemberBy(MemberCode code) {
-        return memberRepository.findMemberBy(code)
-                .orElseThrow(MemberNotFoundException::new);
+    public MemberResponse getMemberBy(MemberCode code) {
+        Member member = memberRepository.findMemberBy(code)
+            .orElseThrow(MemberNotFoundException::new);
+        return MemberResponse.from(member);
     }
 
     @Transactional
