@@ -3,16 +3,15 @@ package com.mpc.springboot.member.application.dto;
 import com.mpc.springboot.member.domain.entity.Member;
 import com.mpc.springboot.member.domain.vo.MemberCode;
 import com.mpc.springboot.member.domain.vo.MemberName;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberResponse {
     private final MemberCode code;
     private final MemberName name;
 
-    public static MemberResponse of(Member member) {
+    public static MemberResponse from(Member member) {
         return new MemberResponse(member.getCode(), member.getName());
     }
 }

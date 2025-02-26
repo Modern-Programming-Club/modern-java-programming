@@ -19,7 +19,7 @@ public class MemberService {
     public MemberResponse getMemberBy(MemberCode code) {
         Member member = memberRepository.findMemberBy(code)
             .orElseThrow(MemberNotFoundException::new);
-        return MemberResponse.of(member);
+        return MemberResponse.from(member);
     }
 
     @Transactional
