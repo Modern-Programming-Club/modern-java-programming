@@ -16,4 +16,13 @@ public class MemberName {
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
+    private MemberName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public static MemberName of(String firstName, String lastName) {
+        return new MemberName(firstName, lastName);
+    }
 }

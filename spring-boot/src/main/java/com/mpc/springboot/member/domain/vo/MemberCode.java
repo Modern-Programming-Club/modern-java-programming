@@ -7,4 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberCode {
     private final String value;
+
+    public static MemberCode of(String value) {
+        return new MemberCode(value);
+    }
 }

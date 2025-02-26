@@ -27,6 +27,15 @@ public class Member {
 
     @Embedded
     private AuditFields auditFields = new AuditFields();
+
+    private Member(MemberCode code, MemberName name) {
+        this.code = code;
+        this.name = name;
+    }
+
+    public static Member of(MemberCode code, MemberName name) {
+        return new Member(code, name);
+    }
 }
 
 
