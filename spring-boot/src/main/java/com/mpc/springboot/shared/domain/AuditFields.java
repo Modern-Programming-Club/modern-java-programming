@@ -3,8 +3,7 @@ package com.mpc.springboot.shared.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.CreatedDate;
