@@ -3,6 +3,7 @@ package com.mpc.springboot.member.application.service;
 import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import com.mpc.springboot.member.application.dto.CreateMemberRequest;
 import com.mpc.springboot.member.application.dto.MemberResponse;
 import com.mpc.springboot.member.domain.entity.Member;
 import com.mpc.springboot.member.domain.exception.MemberNotFoundException;
@@ -23,7 +24,9 @@ public class MemberService {
     }
 
     @Transactional
-    public Member createMember(Member member) {
-        return memberRepository.save(member);
+    public MemberResponse createMember(CreateMemberRequest request) {
+        Member member = request.toEntity();
+        Member saved = memberRepository.save(member);
+        return MemberResponse.from(saved);
     }
 }

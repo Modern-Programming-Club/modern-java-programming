@@ -1,10 +1,9 @@
 package com.mpc.springboot.member.domain.vo;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class MemberCode {
     private final String value;
 

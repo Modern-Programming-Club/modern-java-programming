@@ -26,7 +26,7 @@ public class Member {
     private MemberName name;
 
     @Embedded
-    private AuditFields auditFields = new AuditFields();
+    private final AuditFields auditFields = new AuditFields();
 
     private Member(MemberCode code, MemberName name) {
         this.code = code;

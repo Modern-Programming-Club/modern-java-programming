@@ -21,6 +21,6 @@ public class MemberCodeConverter implements AttributeConverter<MemberCode, Strin
     @Override
     public MemberCode convertToEntityAttribute(String dbData) {
         String value = Objects.requireNonNullElse(dbData, "");
-        return new MemberCode(value);
+        return MemberCode.of(value);
     }
 }
