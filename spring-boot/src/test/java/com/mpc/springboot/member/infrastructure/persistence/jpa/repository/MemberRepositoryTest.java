@@ -8,6 +8,7 @@ import com.mpc.springboot.member.domain.repository.MemberRepository;
 import com.mpc.springboot.member.domain.vo.MemberCode;
 import com.mpc.springboot.member.domain.vo.MemberName;
 import com.mpc.springboot.shared.AbstractRepositoryTest;
+import com.mpc.springboot.shared.type.TestTag;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,7 +29,7 @@ class MemberRepositoryTest extends AbstractRepositoryTest {
     }
 
     @DisplayName("멤버 저장 테스트")
-    @Tag(NO_SETUP)
+    @Tag(TestTag.NO_SETUP)
     @Test
     void save() {
         // given
