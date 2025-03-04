@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import com.mpc.springboot.member.application.dto.CreateMemberRequest;
 import com.mpc.springboot.member.application.dto.MemberResponse;
 import com.mpc.springboot.member.application.service.MemberService;
-import com.mpc.springboot.member.domain.entity.Member;
 import com.mpc.springboot.member.domain.vo.MemberCode;
 import lombok.*;
 
